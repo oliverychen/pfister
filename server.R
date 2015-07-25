@@ -187,6 +187,16 @@ shinyServer(function(input, output) {
       t^3
     }
     
+    wiener <-function (t){
+      set.seed(2)
+      xi_0 = 1
+      n = 5000
+      xi = rnorm(n)
+      100*(xi_0*t + sqrt(2)*sum ( xi[i] * sin(pi*i*t)/(pi*i))
+      )
+    }
+    
+    
     t <- seq(t_0, t_inf, by = ((t_inf - t_0)/1000 ) )
     
     #     plot(data(), 
@@ -211,25 +221,32 @@ shinyServer(function(input, output) {
     
     ### r
     plot(t, w(constant), cex = .1, 
-         ylim=c( min(w(constant), w(linear), w(quadratic)),
-                 max(w(constant), w(linear), w(quadratic))),
-         main ="Time Course of Detectors of Weight Change - All-in-All",
+         ylim=c( min(w(constant), w(linear), w(quadratic), w(wiener)),
+                 max(w(constant), w(linear), w(quadratic), w(wiener))),
+         main ="Time Course of Detectors of Weight Change",
+         sub=expression(paste("Black:", w(t) == 0, ", ",
+                              "red:", w(t) == t, ", ",
+                              "blue:", w(t)==t^2, ", ",
+                              "green:", w(t) == t^3, ", ",
+                              "cyan:", w(t) == 100 * (xi[0]*t
+                                                      + sqrt(2) * sum(xi[i], i==1, 5000)* 
+                                                        frac(sin*pi*n*t, pi*n))
+         )),
          ylab=expression(w(t))
          
     )
     
     #points(t, r_nearest_spike(t, tau_x), cex = .1, col = "red")
     
-    mtext(expression(paste("Black line:", w(t) == 0, " ",
-                           "red line:", w(t) == t, " ",
-                           "blue line:", w(t)==t^2, " ",
-                           "green line:", w(t) == t^3 )))  
+    mtext("All-in-All")  
     
     points(t, w(linear), cex = .1, col = "red")
     
     points(t, w(quadratic), cex = .1, col = "blue")
     
     points(t, w(triple), cex = .1, col = "green")
+    
+    points(t, w(wiener), cex = .1, col = "cyan")
     
     
   })
