@@ -66,11 +66,11 @@ shinyServer(function(input, output) {
     plot(t, r(t, tau_plus), cex = .1, 
          ylim=c(min(r(t, tau_plus), r(t, tau_x)), max(r(t, tau_plus), r(t, tau_x))), 
          main = expression(paste("Time Course of Detectors of Presynaptic Events ", r[1](t) == e^{-t/tau})),
-         ylab=expression(r[1])       
+         ylab=expression(r[1]), type = "l"        
     )
     mtext("All-in-All") 
     
-    points(t, r(t, tau_x), cex = .1, col = "red")
+    points(t, r(t, tau_x), cex = .1, col = "red", type = "l" )
     mtext("All-in-All")
     
     ### o
@@ -78,13 +78,13 @@ shinyServer(function(input, output) {
     plot(t, o(t, tau_minus), cex = .1, 
          ylim=c(min(o(t, tau_minus), o(t, tau_y)), max(o(t, tau_minus), o(t, tau_y))), 
          main = expression(paste("Time Course of Detectors of Postsynaptic Events ", o[1](t) == e^{-t/tau})),
-         ylab=expression(r[1])
+         ylab=expression(r[1]), type = "l" 
          
     )
     
     mtext("All-in-All")
     
-    points(t, o(t, tau_y), cex = .1, col = "red")
+    points(t, o(t, tau_y), cex = .1, col = "red", type = "l" )
     mtext("All-in-All")
     
   })
@@ -129,11 +129,11 @@ shinyServer(function(input, output) {
     plot(t, r_nearest_spike(t, tau_plus), cex = .1, 
          ylim=c(min(r_nearest_spike(t, tau_plus), r_nearest_spike(t, tau_x)), max(r_nearest_spike(t, tau_plus), r_nearest_spike(t, tau_x))), 
          main = expression(paste("Time Course of Detectors of Presynaptic Events ", r[1](t) == e^{-t/tau})),
-         ylab=expression(r[1])
+         ylab=expression(r[1]), type = "l" 
          
     )
     
-    points(t, r_nearest_spike(t, tau_x), cex = .1, col = "red")
+    points(t, r_nearest_spike(t, tau_x), cex = .1, col = "red", type = "l" )
     
     mtext("Nearest-Spike")  
     
@@ -142,11 +142,11 @@ shinyServer(function(input, output) {
     plot(t, o_nearest_spike(t, tau_minus), cex = .1, 
          ylim=c(min(o_nearest_spike(t, tau_minus), o_nearest_spike(t, tau_y)), max(o_nearest_spike(t, tau_minus), o_nearest_spike(t, tau_y))), 
          main = expression(paste("Time Course of Detectors of Postsynaptic Events ", o[1](t) == e^{-t/tau})),
-         ylab=expression(r[1])
+         ylab=expression(r[1]), type = "l" 
          
     )
     
-    points(t, o_nearest_spike(t, tau_y), cex = .1, col = "red")
+    points(t, o_nearest_spike(t, tau_y), cex = .1, col = "red", type = "l" )
     
     mtext("Nearest-Spike") 
   })
@@ -233,7 +233,7 @@ shinyServer(function(input, output) {
                                                      + sqrt(2) * sum(xi[i], i==1, 500)* 
                                                        frac(sin*pi*i*t, pi*i))
          )),
-         ylab=expression(w(t))
+         ylab=expression(w(t)), type = "l" 
          
     )
     
@@ -241,13 +241,13 @@ shinyServer(function(input, output) {
     
     mtext("All-in-All")  
     
-    points(t, w(linear), cex = .1, col = "red")
+    points(t, w(linear), cex = .1, col = "red", type = "l" )
     
-    points(t, w(quadratic), cex = .1, col = "blue")
+    points(t, w(quadratic), cex = .1, col = "blue", type = "l" )
     
-    points(t, w(triple), cex = .1, col = "green")
+    points(t, w(triple), cex = .1, col = "green", type = "l" )
     
-    points(t, w(wiener), cex = .1, col = "cyan")
+    points(t, w(wiener), cex = .1, col = "cyan", type = "l" )
     
     
   })
