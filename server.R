@@ -190,12 +190,13 @@ shinyServer(function(input, output) {
     wiener <-function (t){
       set.seed(2)
       xi_0 = 1
-      n = 5000
+      n = 500
       xi = rnorm(n)
-      100*(xi_0*t + sqrt(2)*sum ( xi[i] * sin(pi*i*t)/(pi*i))
+      options(warn=-1)
+      
+      10*(xi_0*t + sqrt(2)*sum ( xi*sin(pi*rep(1:n)*t)/(pi*rep(1:n)) )
       )
     }
-    
     
     t <- seq(t_0, t_inf, by = ((t_inf - t_0)/1000 ) )
     
@@ -228,9 +229,9 @@ shinyServer(function(input, output) {
                               "red:", w(t) == t, ", ",
                               "blue:", w(t)==t^2, ", ",
                               "green:", w(t) == t^3, ", ",
-                              "cyan:", w(t) == 100 * (xi[0]*t
-                                                      + sqrt(2) * sum(xi[i], i==1, 5000)* 
-                                                        frac(sin*pi*i*t, pi*i))
+                              "cyan:", w(t) == 10 * (xi[0]*t
+                                                     + sqrt(2) * sum(xi[i], i==1, 500)* 
+                                                       frac(sin*pi*i*t, pi*i))
          )),
          ylab=expression(w(t))
          
