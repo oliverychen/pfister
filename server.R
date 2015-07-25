@@ -230,7 +230,7 @@ shinyServer(function(input, output) {
                               "green:", w(t) == t^3, ", ",
                               "cyan:", w(t) == 100 * (xi[0]*t
                                                       + sqrt(2) * sum(xi[i], i==1, 5000)* 
-                                                        frac(sin*pi*n*t, pi*n))
+                                                        frac(sin*pi*i*t, pi*i))
          )),
          ylab=expression(w(t))
          
