@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(pageWithSidebar(
   
   # Application title
-  headerPanel("Pfister"),
+  headerPanel("STDP Beta 1.0"),
   
   titlePanel("Triplets of Spikes in a Model of Spike Timing-Dependent Plasticity"),
   
